@@ -58,7 +58,7 @@ const getSortIcon = (column: SortColumn) => {
         <tr v-for="file in files" :key="file.id" class="hover:bg-gray-100">
           <td class="flex items-center gap-8">
             <input type="checkbox" v-model="file.selected" />
-            <img :src="file.url" class="w-80 rounded-sm" />
+            <img :src="file.url" class="w-80 h-40 rounded-sm" />
           </td>
           <td>{{ file.name }}</td>
           <td>{{ file.dimension }}</td>
