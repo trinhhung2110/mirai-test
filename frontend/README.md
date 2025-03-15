@@ -1,15 +1,26 @@
-## Project Setup
+## Project Preview
 
-```sh
+![Project Preview](./result.png)
+
+## Setup Instructions
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd frontend
+```
+
+2. Install dependencies:
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+3. Run the development server:
 
-```sh
+```bash
 npm run dev
 ```
 
-## Image example
-
-/example.png
+The application will be available at `http://localhost:5173`
