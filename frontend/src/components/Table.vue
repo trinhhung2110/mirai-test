@@ -36,7 +36,7 @@ const getSortIcon = (column: SortColumn) => {
     <table class="w-full ml-8">
       <thead>
         <tr class="text-gray-500 text-sm text-left">
-          <th class="flex items-center gap-3">
+          <th class="flex items-center gap-8">
             <input type="checkbox" @click="emit('selectAll', $event)" />
             <span class="text-gray-500 text-sm">Select all</span>
           </th>
