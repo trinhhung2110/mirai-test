@@ -1,20 +1,33 @@
 <script setup lang="ts">
-import { Files } from '@/type/Files'
-
+import { type Files } from '@/types/Files'
+import { type SortColumn } from '@/views/Index.vue'
 interface Props {
   files: Files[]
-  currentSort: string | null
+  currentSort: SortColumn | null
   sortDirection: 'asc' | 'desc' | null
 }
-defineProps<Props>()
+const props = defineProps<Props>()
 
 const emit = defineEmits<{
   (e: 'selectAll', event: Event): void
-  (e: 'sortBy', value: string): void
+  (e: 'sortBy', value: SortColumn): void
 }>()
 
 const formatToKB = (bytes: string): string => {
   return `${(Number(bytes) / 1024).toFixed(1)} KB`
+}
+
+const getSortIcon = (column: SortColumn) => {
+  if (props.currentSort === column) {
+    return {
+      icon: props.sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down',
+      class: 'text-gray-500 text-[10px]',
+    }
+  }
+  return {
+    icon: 'fa-sort',
+    class: 'text-gray-500 text-[10px]',
+  }
 }
 </script>
 
@@ -22,46 +35,22 @@ const formatToKB = (bytes: string): string => {
   <main class="flex-1 p-4 pl-64">
     <table class="w-full ml-8">
       <thead>
-        <tr class="text-gray-500 text-sm font-medium text-left">
+        <tr class="text-gray-500 text-sm text-left">
           <th class="flex items-center gap-3">
             <input type="checkbox" @click="emit('selectAll', $event)" />
-            <span class="text-gray-600 text-sm font-medium">Select all</span>
+            <span class="text-gray-500 text-sm">Select all</span>
           </th>
           <th @click="emit('sortBy', 'name')" class="cursor-pointer">
             Name
-            <i
-              v-if="currentSort === 'name'"
-              :class="{
-                'fas fa-sort-up': sortDirection === 'asc',
-                'fas fa-sort-down': sortDirection === 'desc',
-              }"
-              class="text-gray-500 text-[10px]"
-            ></i>
-            <i v-else class="fas fa-sort text-gray-500 text-[10px]"></i>
+            <i class="fas" :class="[getSortIcon('name').icon, getSortIcon('name').class]"></i>
           </th>
           <th @click="emit('sortBy', 'dimension')" class="cursor-pointer">
             Dimension
-            <i
-              v-if="currentSort === 'dimension'"
-              :class="{
-                'fas fa-sort-up': sortDirection === 'asc',
-                'fas fa-sort-down': sortDirection === 'desc',
-              }"
-              class="text-gray-500 text-[10px]"
-            ></i>
-            <i v-else class="fas fa-sort text-gray-500 text-[10px]"></i>
+            <i class="fas" :class="[getSortIcon('dimension').icon, getSortIcon('dimension').class]"></i>
           </th>
           <th @click="emit('sortBy', 'size')" class="cursor-pointer">
             Size
-            <i
-              v-if="currentSort === 'size'"
-              :class="{
-                'fas fa-sort-up': sortDirection === 'asc',
-                'fas fa-sort-down': sortDirection === 'desc',
-              }"
-              class="text-gray-500 text-[10px]"
-            ></i>
-            <i v-else class="fas fa-sort text-gray-500 text-[10px]"></i>
+            <i class="fas" :class="[getSortIcon('size').icon, getSortIcon('size').class]"></i>
           </th>
         </tr>
       </thead>
@@ -80,7 +69,7 @@ const formatToKB = (bytes: string): string => {
   </main>
 </template>
 
-<style>
+<style scoped>
 th,
 td {
   padding: 10px;
