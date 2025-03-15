@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+input[type='checkbox'] {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}

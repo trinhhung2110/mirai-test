@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,15 +17,15 @@ Route::get('/users/{id}', [\App\Http\Controllers\UserController::class, 'findUse
 Route::apiResource('accounts', AccountController::class);
 
 // test 2
-Route::post('/showSerialpaso', [AccountController::class, 'showSerialpaso']);
+Route::post('/showSerialpaso', [TestController::class, 'showSerialpaso']);
 
 // test 3
-Route::get('/countStudents', [AccountController::class, 'countStudents']);
+Route::get('/countStudents', [TestController::class, 'countStudents']);
 
 // test 4
-Route::get('/top20Percent/{numPeople}', [AccountController::class, 'findTop20Percent']);
+Route::post('/top20Percent', [TestController::class, 'findTop20Percent']);
 
 // test 5
-Route::get('/findFurthestPeople', [AccountController::class, 'findFurthestPeople']);
+Route::post('/findFurthestPeople', [TestController::class, 'findFurthestPeople']);
 
 
