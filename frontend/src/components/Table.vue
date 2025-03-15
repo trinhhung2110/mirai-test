@@ -33,7 +33,7 @@ const getSortIcon = (column: SortColumn) => {
 
 <template>
   <main class="flex-1 p-4 pl-64">
-    <table class="w-full ml-8">
+    <table class="w-full">
       <thead>
         <tr class="text-gray-500 text-sm text-left">
           <th class="flex items-center gap-8">
@@ -72,6 +72,7 @@ const getSortIcon = (column: SortColumn) => {
 <style scoped>
 th,
 td {
-  padding: 10px;
+  padding: 15px;
+  padding-left: 30px;
 }
 </style>
